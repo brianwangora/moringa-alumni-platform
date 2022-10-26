@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
   
-  resources :messages
-  resources :comments
   resources :user_groups, only: [:index, :show, :create]
-  resources :groups do
-    resources :messages
-  end
-  resources :posts
+  resources :groups  
   # resources :users
   get "/post", to: "posts#new"
 

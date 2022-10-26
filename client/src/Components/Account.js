@@ -84,9 +84,6 @@ function Account({ user, userPosts }) {
 						</div>
 					))}
 			</div>
-			<div className="account_right">
-
-			</div>
 		</div>
 	);
 }

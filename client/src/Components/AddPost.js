@@ -46,6 +46,7 @@ function AddPost({onClick}) {
                 <button type="submit" className="btn" >submit</button>
                 <button onClick={onClick}>X</button>
 			</form>
+			
 		</div>
 	);
 }

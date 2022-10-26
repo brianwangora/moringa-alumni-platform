@@ -21,7 +21,7 @@
 .latest_btn{
     text-transform: capitalize;
     outline: none;
-    background-color: #f59e42;
+    background-color: rgb(75, 73, 73);
     border: none;
     width: 75px;
     height: 35px;
@@ -29,6 +29,7 @@
     position: absolute;
     right: 10px;
     border-radius: 15px;
+    color: white;
     
 }
 

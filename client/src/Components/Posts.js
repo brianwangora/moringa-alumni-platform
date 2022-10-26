@@ -20,6 +20,22 @@ function Posts() {
 		color: "white",
 	};
 	console.log(posts);
+
+	function handleDeleteItem(deletedItem) {
+		const updatedItems = posts.filter((item) => item.id !== deletedItem.id);
+		setPosts(updatedItems);
+	  }
+
+	  function handleUpdateItem(updatedItem) {
+		const updatedItems = posts.map((item) => {
+		  if (item.id === updatedItem.id) {
+			return updatedItem;
+		  } else {
+			return item;
+		  }
+		});
+		setPosts(updatedItems);
+	  }
 	return (
 		<div className="container">
 			<div className="left"></div>
@@ -43,6 +59,11 @@ function Posts() {
 						return (
 							<div key={post.id}>
 								<SinglePost
+								    update={handleUpdateItem}
+								    onDelete={handleDeleteItem}
+								    setPosts={setPosts}
+								    post={post}
+								    id={post.id}
 									title={post.title}
 									image={post.user.image_url}
 									time={post.created_at}

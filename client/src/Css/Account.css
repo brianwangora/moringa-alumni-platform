@@ -12,11 +12,11 @@
 }
 
 .account{
-    background-color: rgb(50, 157, 168);
+    background-color: #989e9b;
     width: 100%;
     height: 100vh;
     margin-top: 0px;
-    display: flex;
+    display: inline-block;
     justify-content: space-between;
     overflow: auto;
     margin-bottom: -10px;
@@ -71,11 +71,12 @@
     text-align: center;
     width: 640px;
     height: 260px;
-    background-color: white;
+    background-color: lightgray;
     color: #18181a;
     margin-bottom: 20px;
     border-radius: 5px;
-    object-fit: cover;
+    padding: 10px 0;
+    object-fit: contain;
 }
 
 .account_adverts > h4 {
@@ -86,6 +87,7 @@
 
 .account_center{
     padding-top: 75px;
+    margin-left: 400px;
 }
 
 .account_right{
@@ -136,4 +138,5 @@
     border-radius: 12px;
     margin-left: 80px;
     border: 1px solid #f59e42;
+    z-index: 1;
 }
