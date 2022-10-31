@@ -15,6 +15,7 @@ import Login from "./Login";
 
 
 import About from "./About";
+//import Contact from "./Contact";
 
 function Home({onLogin}) {
 	const [show, setShow] = useState(false)

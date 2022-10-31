@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 
 const VMC = () => {
     return (
@@ -53,3 +53,4 @@ const VMC = () => {
 }
 
 export default VMC;
+*/
