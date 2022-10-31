@@ -14,9 +14,6 @@ import { NavLink } from "react-router-dom";
 import Login from "./Login";
 
 
-import About from "./About";
-//import Contact from "./Contact";
-
 function Home({onLogin}) {
 	const [show, setShow] = useState(false)
 	const iconStyles = {
@@ -44,15 +41,12 @@ function handleShow() {
 				<div className="home_bottom">
 					<div className="home_content">
 						<h1>
-							kick start your dreams <br /> with us at map
+							Nurturing Africa’s <br /> Tech Talent
 						</h1>
 						<p>
-							Figma image overlay can come in handy when trying to put text on top
-							of an image.
-							<br /> Figma image tricks and trips. Design well Figma image overlay
-							can come in handy when trying <br />
-							to put text on top of an image. Figma image tricks and trips. Design
-							well ...
+							Through market-aligned skills training, we help learners build new <br/>
+							career possibilities with greater confidence and capability.
+
 						</p>
 					</div>
 
