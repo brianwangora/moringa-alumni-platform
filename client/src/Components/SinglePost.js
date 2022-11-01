@@ -1,16 +1,11 @@
 import React, {useState} from "react";
 import "../Css/SinglePost.css"
 import { FaComments } from "react-icons/fa"
+import EditPost from "./EditPost";
 
 function SinglePost({ onDelete, update, id, post, image, time, author, content, comments, title  }) {
-	const [posts, setPosts] = useState({
-		image: "",
-		title: "",
-		author: "",
-		content: "",
-		time: "",
-		comments: "",
-	});
+
+	const [editUi, setEditUi] = useState(false);
 
 	function handleDeleteClick(){
 
@@ -21,23 +16,8 @@ function SinglePost({ onDelete, update, id, post, image, time, author, content, 
 			.then(() => onDelete(post));
     }
 
-//function SinglePost({ onDelete, update, id, post, image, time, author, content, comments, title  }) {
-	function handleUpdateClick(id, update){
-		fetch(`/posts${id}`, {
-		method: "PATCH",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({ update }),
-		})
-		.then((r) => r.json())
-		.then((updatedPost) => {
-			const updatedPosts = posts.map((p) => {
-			if (p.id === updatedPost.id) return updatedPost;
-			return p;
-			});
-			setPosts(updatedPosts);
-		});
+	function showEditUi() {
+		setEditUi((editUi) => !editUi);
 	}
 
 	return (
@@ -56,7 +36,9 @@ function SinglePost({ onDelete, update, id, post, image, time, author, content, 
 						<p className="right"><b>{comments}</b><FaComments size="1.4em"/></p>
 					</div>
 					<button onClick={handleDeleteClick}>X</button>
-					<button onClick={handleUpdateClick}>edit</button>
+					<button onClick={showEditUi}>Edit</button>
+
+					{editUi ? <EditPost onClick={showEditUi} id={id}/> : null}
 				</div>
 			</div>
 		</div>
