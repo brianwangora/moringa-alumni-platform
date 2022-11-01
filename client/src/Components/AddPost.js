@@ -5,7 +5,7 @@ function AddPost({onClick}) {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [errors, setErrors] = useState([])
-    
+
 
     function handleSubmit(e) {
 		e.preventDefault();
