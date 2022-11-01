@@ -36,7 +36,7 @@ function App() {
 				<Route exact path="/posts" element={<Posts />} />
         <Route exact path="/groups" element={<Groups />} />
         <Route exact path="/about" element={<About />} />
-        <Route exact path="/contact us" element={<Contact Us/>} />
+        <Route exact path="/contact" element={<Contact/>} />
         <Route exact path="/account" element={<Account user={user} />} />
 			</Routes>
 		</div>

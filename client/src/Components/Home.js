@@ -12,6 +12,7 @@ import {
 import "../Css/Home.css";
 import { NavLink } from "react-router-dom";
 import Login from "./Login";
+import Contact from "./Contact";
 
 
 function Home({onLogin}) {

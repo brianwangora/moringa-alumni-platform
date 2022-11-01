@@ -37,7 +37,7 @@ function Nav({user, setUser}) {
 				</NavLink>
 				<NavLink
 					className="li"
-					to="contacts"
+					to="contact"
 					style={{ textDecoration: "none" }}
 				>
 					contact us
