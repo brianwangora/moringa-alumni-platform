@@ -2,23 +2,23 @@ class PostsController < ApplicationController
     before_action :authorize
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     # GET /posts
-    def index 
-        posts = Post.all 
+    def index
+        posts = Post.all
         render json: posts
     end
-    
+
     def new
         render json: Post.last(3)
     end
 
     # GET /posts/:id
-    def show 
+    def show
         post = Post.find(params[:id])
-        render json: post 
+        render json: post
     end
 
     # POST /posts
-    def create 
+    def create
         user_id = session[:user_id]
         user = User.find(user_id)
         post = user.posts.create(post_params)
@@ -30,14 +30,14 @@ class PostsController < ApplicationController
         post = Post.find(params[:id])
         if post
             post.update(update_params)
-            render json: post 
+            render json: post
         else
             render json: { errors: ["Post not found"] }, status: :not_found
         end
     end
 
     # DELETE /poststs/:id
-    def destroy 
+    def destroy
         post = Post.find(params[:id])
         if post
             post.destroy
@@ -59,7 +59,7 @@ class PostsController < ApplicationController
 
 
     def update_params
-        params.permit(:title)
+        params.permit(:title, :content)
     end
     def authorize
         return render json: {errors: ["Unauthorized"]}, status: :unauthorized unless session[:user_id]
