@@ -4,3 +4,4 @@ module ApplicationCable
       stream_from 'messages'
     end
   end 
+end
