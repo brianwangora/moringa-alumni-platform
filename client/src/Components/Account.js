@@ -82,8 +82,8 @@ function Account({ user, userPosts }) {
 	const sideBarIconsTop = {
 		marginTop: "60px",
 		backgroundColor: "blue",
-		width: "73px",
-		height: "73px",
+		width: "63px",
+		height: "63px",
 		padding: "15px"
 	}
 
@@ -126,7 +126,7 @@ function Account({ user, userPosts }) {
 							<img className="account_profile" src={image_url} />
 							<div className="sideOf_profile">
 								<h4 className="username">{username}
-									<img onClick={openEditUserUi} src="/edit-icon.png" style={{marginLeft: "10px"}}alt="edit icon" width="25px" height="25px"/>
+									<img onClick={openEditUserUi} src="/edit-icon.png" style={{marginLeft: "40px"}}alt="edit icon" width="25px" height="25px"/>
 								</h4>
 								<p className="createdAt">Created on {created_at}</p>
 								<div className="liveUser">
@@ -189,7 +189,7 @@ function Account({ user, userPosts }) {
 					</button>
 				</div> */}
 
-					{show ? <AddPost onClick={handleShow} /> : null}
+					
               {/* <div className="more">
               <h5 className="more_nav first">Chat rooms</h5>
               <h5 className="more_nav">Posts</h5>
