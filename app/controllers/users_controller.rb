@@ -2,26 +2,26 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
 
-    def index
+     def index
     #   render json: User.all, status: :ok
       render json: User.where.not(status: "admin")
-  end
+     end
 
-  def show
+     def show
+   
+         user = User.find(session[:user_id])
+         if user
+             render json: user
+         else
+             render json: {error: "Not authorized"}, status: :unauthorized
+         end
+     end
 
-      user = User.find(session[:user_id])
-      if user
-          render json: user
-      else
-          render json: {error: "Not authorized"}, status: :unauthorized
-      end
-  end
-
-  def update
-      user= User.find_by(id: params[:id])
-      user.update!(update_params)
-      render json: user, status: :accepted
-  end
+     def update
+         user= User.find_by(id: params[:id])
+         user.update!(update_params)
+         render json: user, status: :accepted
+     end
 
   def create 
       @user = User.create!(user_params)
@@ -38,12 +38,13 @@ class UsersController < ApplicationController
     #     format.html { redirect_to @user}
     #     format.js
     #   end
+    # end
   end
 
   private
 
   def user_params
-      params.permit (:username,:name,:cohort,:image_url, :password, :email, :password_confirmation)
+      params.permit(:username, :name, :cohort, :image_url, :password, :email, :password_confirmation)
   end
 
   def update_params

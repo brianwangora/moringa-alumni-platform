@@ -32,9 +32,9 @@ function Nav({user, setUser}) {
 				{/* <NavLink className="li" to="/groups" style={{ textDecoration: "none" }}>
 					groups
 				</NavLink> */}
-				{/* <NavLink className="li" to="/funds" style={{ textDecoration: "none" }}>
+				<NavLink className="li" to="/funds" style={{ textDecoration: "none" }}>
 					fundraisers
-				</NavLink> */}
+				</NavLink>
 				<NavLink className="li" to="/about" style={{ textDecoration: "none" }}>
 					about
 				</NavLink>
