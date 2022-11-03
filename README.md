@@ -28,6 +28,8 @@ npm install --prefix client
 
 
  to run the application:
+ Rails API - https://moringa-connect.herokuapp.com
+ Frontend is hosted on - https://moringa-connect.vercel.app 
 
 `rails s` then 
 run the backend on [http://localhost:3000](http://localhost:3000)
