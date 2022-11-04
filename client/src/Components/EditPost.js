@@ -1,12 +1,15 @@
+import '../Css/EditPost.css'
+
 import React, { useState } from "react";
 
-
-function EditPost(id) {
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
+function EditPost({id, titleBody, contentBody, editUi}) {
+    const [title, setTitle] = useState(titleBody)
+    const [content, setContent] = useState(contentBody)
     const [errors, setErrors] = useState([])
+	// const [editUi, setEditUi] = useState(false);
 
-
+console.log(id)
+ 
     function handleEdit(e) {
 		e.preventDefault();
 		setErrors([]);
@@ -20,6 +23,7 @@ function EditPost(id) {
 				content: content
 			}),
 
+			
 		}).then((r) => {
 			if (r.ok) {
 				r.json().then((post) => {
@@ -35,19 +39,25 @@ function EditPost(id) {
             // setContent('') 
             // setTitle('')
 		});
+		
 	}
 
-	console.log(id)
+	function handleChange(e) {
+		setTitle(e.target.value)
+		setTitle(e.target.value)
+	}
+
+	
 
 	return (
 		<div className="editPost">
 			<form onSubmit={handleEdit}>
-				<input type="text" id="title" className="post_input" value={title} placeholder="title" onChange={(e) => setTitle(e.target.value)}/>
+				<input type="text" name="title" id="title" className="edit_input" value={title} placeholder="title" onChange={(e) => setTitle(e.target.value)}/>
 <br/>
-				<input type="text" id="content" className="post_input" value={content} placeholder="content" onChange={(e) => setContent(e.target.value)}/>
+				<input type="text" name="content" id="content" className="edit_input" value={content} placeholder="content" onChange={(e) => setContent(e.target.value)}/>
 <br/>
 
-                <button>Edit</button>
+                <button className="editBtn">Edit</button>
 			</form>
 		</div>
 	);
