@@ -1,19 +1,5 @@
 import "../Css/Account.css";
 
-import React, { useState } from "react";
-
-import AddPost from "./AddPost";
-//Temba down
-import EditUser from "./EditUser";
-
-import Admin from "./Admin";
-import Moment from "moment";
-import { FaComments } from "react-icons/fa";
-import { AiOutlineCheck } from "react-icons/ai";
-import { MdOutlineAdd } from "react-icons/md";
-import { Navigate } from "react-router-dom";
-import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
-import {  MdOutlinePostAdd, MdGroupAdd, MdOutlineAccountCircle, MdOutlineMenuOpen } from "react-icons/md";
 import {
 	FaCheckCircle,
 	FaFacebookF,
@@ -22,17 +8,39 @@ import {
 	FaTwitter,
 	FaYoutube,
 } from "react-icons/fa";
-import Groups from "./Groups";
+import {
+	MdGroupAdd,
+	MdOutlineAccountCircle,
+	MdOutlineMenuOpen,
+	MdOutlinePostAdd,
+} from "react-icons/md";
+import { Navigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
+
+import AddPost from "./AddPost";
+import Admin from "./Admin";
+import { AiOutlineCheck } from "react-icons/ai";
 import EditPost from "./EditPost";
+import { FaComments } from "react-icons/fa";
+import Groups from "./Groups";
+import { MdOutlineAdd } from "react-icons/md";
+import Moment from "moment";
+import UserSinglePost from "./UserSinglePost";
 
 function Account({ user, userPosts }) {
 	const [show, setShow] = useState(false);
 	const [showGroupForm, setShowGroupForm] = useState(false);
 	const [query, setQuery] = useState("");
 	const [editUi, setEditUi] = useState(false);
-	const [showEditUserUi, setShowEditUserUi] = useState(false);
 
-	const { username, image_url, created_at, posts, comments, groups, email, id } = user;
+	let params = useParams();
+
+	const { username, image_url, created_at, posts, comments, groups } = user;
+
+	function handleDelet() {
+		console.log(params);
+	}
 
 	function handleShow() {
 		setShow((show) => !show);
@@ -44,12 +52,6 @@ function Account({ user, userPosts }) {
 
 	function showEditUi() {
 		setEditUi((editUi) => !editUi);
-	}
-
-	/*Temba's code */
-
-	function openEditUserUi() {
-		setShowEditUserUi((showEditUserUi) => !showEditUserUi)
 	}
 
 	const addIconStyles = {
@@ -73,33 +75,40 @@ function Account({ user, userPosts }) {
 		cursor: "pointer",
 	};
 
-	const sideBarIcons ={
+	const sideBarIcons = {
 		marginTop: "35px",
 		color: "gray",
-		cursor: "pointer"
-	}
+		cursor: "pointer",
+	};
 
 	const sideBarIconsTop = {
 		marginTop: "60px",
 		backgroundColor: "blue",
 		width: "63px",
 		height: "63px",
-		padding: "15px"
-	}
+		padding: "15px",
+	};
 
-	console.log(user);
 	return (
 		<div className="account">
 			<div className="account_side_left">
-			<MdOutlineMenuOpen style={sideBarIconsTop} size="1em"/>
+				<MdOutlineMenuOpen style={sideBarIconsTop} size="1em" />
 				<div className="sideBarIcons">
-				{/* <MdOutlineMenuOpen style={sideBarIconsTop} size="3em"/>
+					{/* <MdOutlineMenuOpen style={sideBarIconsTop} size="3em"/>
 				<br/> */}
-				<MdOutlinePostAdd onClick={handleShow} style={sideBarIcons} size="2em"/>
-				<br/>
-				<MdGroupAdd onClick={handleShowGroupForm} style={sideBarIcons} size="2em"/>
-				<br/>
-				<MdOutlineAccountCircle style={sideBarIcons} size="2em"/>
+					<MdOutlinePostAdd
+						onClick={handleShow}
+						style={sideBarIcons}
+						size="2em"
+					/>
+					<br />
+					<MdGroupAdd
+						onClick={handleShowGroupForm}
+						style={sideBarIcons}
+						size="2em"
+					/>
+					<br />
+					<MdOutlineAccountCircle style={sideBarIcons} size="2em" />
 				</div>
 			</div>
 			<div className="account_center">
@@ -119,16 +128,14 @@ function Account({ user, userPosts }) {
 					</button>
 				</div> */}
 					<div className="profile_top">
-					{show ? <AddPost/> : null}
+						{show ? <AddPost /> : null}
 						<div className="div"></div>
-						{showGroupForm ? <Groups/> : null}
+						{showGroupForm ? <Groups /> : null}
 						<div className="div_container">
 							<img className="account_profile" src={image_url} />
 							<div className="sideOf_profile">
-								<h4 className="username">{username}
-									<img onClick={openEditUserUi} src="/edit-icon.png" style={{marginLeft: "40px"}}alt="edit icon" width="25px" height="25px"/>
-								</h4>
-								<p className="createdAt">Created on {created_at}</p>
+								<h4 className="username">{username}</h4>
+								<p className="createdAt">created on {created_at}</p>
 								<div className="liveUser">
 									<AiOutlineCheck size="1.5em" />
 								</div>
@@ -189,20 +196,16 @@ function Account({ user, userPosts }) {
 					</button>
 				</div> */}
 
-					
-              {/* <div className="more">
-              <h5 className="more_nav first">Chat rooms</h5>
-              <h5 className="more_nav">Posts</h5>
-              <h5 className="more_nav">Comments</h5>
-              <h5 className="more_nav">Fundraisers</h5>
-              <h5 className="more_nav">Premium membership</h5>
-              <h5 className="more_nav ">Adverts</h5>
-              <h5 className="more_nav ">add something</h5>
-              <h5 className="more_nav last">add something</h5>
-            </div> */}
-					{showEditUserUi ? <EditUser onClose={openEditUserUi} id={id}/> : null}
-
-
+					{/* <div className="more">
+						<h5 className="more_nav first">chat rooms</h5>
+						<h5 className="more_nav">posts</h5>
+						<h5 className="more_nav">comments</h5>
+						<h5 className="more_nav">fundraisers</h5>
+						<h5 className="more_nav">premium membership</h5>
+						<h5 className="more_nav ">adverts</h5>
+						<h5 className="more_nav ">add something</h5>
+						<h5 className="more_nav last">add something</h5>
+					</div> */}
 				</div>
 
 				<div className="account_center">
@@ -210,24 +213,33 @@ function Account({ user, userPosts }) {
 					{/* <h4>Advert area</h4> */}
 					{/* <video  className="account_adverts" src="https://ak.picdn.net/shutterstock/videos/1043972062/preview/stock-footage-reeds-sway-on-wind-and-sun-rays-wild-grass-sway-from-wind-on-nature-sky-reed-in-meadow-sways-grass.webm" autoPlay loop muted />
 				</div> */}
-					{user.posts
-						?.filter((item) => item.content.toLowerCase().includes(query))
-						.map((item) => (
+					{user.posts.map((item) => {
+						return (
 							<div key={item.id} className="account_posts">
-								<div className="img_container">
+
+								<UserSinglePost
+								image = {item.image_url}
+								title = {item.title}
+								content = {item.content}
+								id = {item.id}
+								username = {username}
+								comments = {item.comments}
+								post={item}
+								/>
+								{/* <div className="img_container">
 									<img className="account_img" src={item.image_url} />
 								</div>
 								<div className="account_posts_content">
-								<button className="read">read</button>
+									<button className="read">read</button>
 									<h4 className="postTitle">{item.title}</h4>
 									<div id="body">
-									<p className="body">
-										A post by {username}: {item.content}...
-									</p>
+										<p className="body">
+											A post by {username}: {item.content}...
+										</p>
 									</div>
 
 									<div className="info">
-										{/* <p>{item.created_at}</p> */}
+								
 										<p className="right">
 											<b>{item.comments}</b>
 											<FaComments style={addIconStyles} size="1.2em" />
@@ -237,7 +249,7 @@ function Account({ user, userPosts }) {
 												className="account_delete"
 												style={crudIcon}
 												size="1.2em"
-
+												onClick={handleDelet}
 											/>
 											<RiEditBoxLine
 												className="account_update"
@@ -246,11 +258,21 @@ function Account({ user, userPosts }) {
 												onClick={showEditUi}
 											/>
 										</div>
-
 									</div>
 								</div>
+								{editUi ? (
+									<EditPost
+										onClick={showEditUi}
+										id={item.id}
+										editUi={editUi}
+										setEditUi={setEditUi}
+										editTitle={item.title}
+										editContent={item.content}
+									/>
+								) : null} */}
 							</div>
-						))}
+						);
+					})}
 				</div>
 			</div>
 
