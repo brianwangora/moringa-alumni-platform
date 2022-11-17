@@ -15,6 +15,7 @@ Frontend: ReactJs & Redux Toolkit(state management)
 
 ## Requirements
 
+
 - Ruby 2.7.4
 - NodeJS (v16), and npm
 - Postgresql
